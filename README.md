@@ -5,6 +5,10 @@ The purpose of this repository is to collect sample [queries](https://query.wiki
 ## Relevant entities
 
 - [Hierarchical Data Format (Q1069215)](https://www.wikidata.org/wiki/Q1069215)
+- [HDF5 (Q61080677)](https://www.wikidata.org/wiki/Q61080677)
+- [HDF4 (Q63065200)](https://www.wikidata.org/wiki/Q63065200)
+- [Highly Scalable Data Service (Q114859023)](https://www.wikidata.org/wiki/Q114859023)
+- [HDFView (Q130060108)](https://www.wikidata.org/wiki/Q130060108)
 
 ## Relevant properties
 
