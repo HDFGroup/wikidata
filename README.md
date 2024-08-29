@@ -13,6 +13,8 @@ The purpose of this repository is to collect sample [queries](https://query.wiki
 
 ## Example
 
+List subjects that are capable of reading or writing [HDF](https://www.wikidata.org/wiki/Q1069215):
+
 ```sparql
 SELECT DISTINCT ?x ?xLabel ?url WHERE {
   { ?x wdt:P1072 wd:Q1069215 . }       # Something that can read HDF
