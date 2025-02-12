@@ -1,0 +1,5 @@
+pandas
+psutil
+rdflib
+requests
+simplejson
