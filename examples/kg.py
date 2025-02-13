@@ -45,11 +45,14 @@ for s, p, o in triples:
 #===============================================================================
 
 b10 = BNode()
+b100 = BNode()
 triples = [
     # dataset
     (H5.d1, RDF.type, H5.Dataset),
     (H5.d1, H5.hasDatatype, H5.H5T_STD_I32BE),
-    (H5.d1, H5.hasDataspace, Literal("[10, 10]")),
+    (b100, RDF.type, H5.Dataspace),
+    (b100, H5.shape, Literal("[10, 10]")),
+    (H5.d1, H5.hasDataspace, b100),
     # link
     (b10, RDF.type, H5.Link),
     (b10, RDFS.label, Literal("dset1")),
@@ -68,6 +71,7 @@ b3 = BNode()
 b4 = BNode()
 b5 = BNode()
 b11 = BNode()
+b110 = BNode()
 triples = [
     # datatype
     (b2, RDF.type, H5.Datatype),
@@ -90,7 +94,9 @@ triples = [
     # dataset
     (H5.d2, RDF.type, H5.Dataset),
     (H5.d2, H5.hasDatatype, b2),
-    (H5.d2, H5.hasDataspace, Literal("[5]")),
+    (b110, RDF.type, H5.Dataspace),
+    (b110, H5.shape, Literal("[5]")),
+    (H5.d2, H5.hasDataspace, b110),
     # link
     (b11, RDF.type, H5.Link),
     (b11, RDFS.label, Literal("dset2")),
@@ -123,11 +129,14 @@ for s, p, o in triples:
 #===============================================================================
 
 b13 = BNode()
+b130 = BNode()
 triples = [
     # dataset
     (H5.d3, RDF.type, H5.Dataset),
     (H5.d3, H5.hasDatatype, Literal("/type1")),
-    (H5.d3, H5.hasDataspace, Literal("[5]")),
+    (b130, RDF.type, H5.Dataspace),
+    (b130, H5.shape, Literal("[5]")),
+    (H5.d3, H5.hasDataspace, b130),
     # link
     (b13, RDF.type, H5.Link),
     (b13, RDFS.label, Literal("dset3")),
@@ -143,6 +152,7 @@ for s, p, o in triples:
 
 b22 = BNode()
 b14 = BNode()
+b140 = BNode()
 triples = [
     # datatype
     (b22, RDF.type, H5.Datatype),
@@ -151,7 +161,9 @@ triples = [
     # dataset
     (H5.d4, RDF.type, H5.Dataset),
     (H5.d4, H5.hasDatatype, b22),
-    (H5.d4, H5.hasDataspace, Literal("[4]")),
+    (b140, RDF.type, H5.Dataspace),
+    (b140, H5.shape, Literal("[4]")),
+    (H5.d4, H5.hasDataspace, b140),
     # link
     (b14, RDF.type, H5.Link),
     (b14, RDFS.label, Literal("dset3")),

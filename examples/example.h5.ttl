@@ -17,8 +17,11 @@ ns1:file a ns1:File ;
                             ns1:stringSize 17 ] ;
                     ns1:hasValue "string attribute" ] ;
             ns1:hasLink [ a ns1:Link ;
-                    rdfs:label "type1" ;
-                    ns1:destination ns1:t4 ],
+                    rdfs:label "dset2" ;
+                    ns1:destination ns1:d2 ],
+                [ a ns1:Link ;
+                    rdfs:label "group1" ;
+                    ns1:destination ns1:g1 ],
                 [ a ns1:Link ;
                     rdfs:label "dset1" ;
                     ns1:destination ns1:d1 ],
@@ -26,11 +29,8 @@ ns1:file a ns1:File ;
                     rdfs:label "slink1" ;
                     ns1:destination "somevalue" ],
                 [ a ns1:Link ;
-                    rdfs:label "group1" ;
-                    ns1:destination ns1:g1 ],
-                [ a ns1:Link ;
-                    rdfs:label "dset2" ;
-                    ns1:destination ns1:d2 ],
+                    rdfs:label "type1" ;
+                    ns1:destination ns1:t4 ],
                 [ a ns1:Link ;
                     rdfs:label "dset3" ;
                     ns1:destination ns1:d4 ],
@@ -39,29 +39,33 @@ ns1:file a ns1:File ;
                     ns1:destination ns1:g1 ] ] .
 
 ns1:d1 a ns1:Dataset ;
-    ns1:hasDataspace "[10, 10]" ;
+    ns1:hasDataspace [ a ns1:Dataspace ;
+            ns1:shape "[10, 10]" ] ;
     ns1:hasDatatype ns1:H5T_STD_I32BE .
 
 ns1:d2 a ns1:Dataset ;
-    ns1:hasDataspace "[5]" ;
+    ns1:hasDataspace [ a ns1:Dataspace ;
+            ns1:shape "[5]" ] ;
     ns1:hasDatatype [ a ns1:Datatype ;
             ns1:datatypeClass ns1:H5T_COMPOUND ;
-            ns1:hasField [ ns1:fieldName "c" ;
+            ns1:hasField [ ns1:fieldName "b" ;
+                    ns1:fieldType ns1:H5T_IEEE_F32BE ;
+                    ns1:hasOffset 4 ],
+                [ ns1:fieldName "c" ;
                     ns1:fieldType ns1:H5T_IEEE_F64BE ;
                     ns1:hasOffset 8 ],
                 [ ns1:fieldName "a" ;
                     ns1:fieldType ns1:H5T_STD_I32BE ;
-                    ns1:hasOffset 0 ],
-                [ ns1:fieldName "b" ;
-                    ns1:fieldType ns1:H5T_IEEE_F32BE ;
-                    ns1:hasOffset 4 ] ] .
+                    ns1:hasOffset 0 ] ] .
 
 ns1:d3 a ns1:Dataset ;
-    ns1:hasDataspace "[5]" ;
+    ns1:hasDataspace [ a ns1:Dataspace ;
+            ns1:shape "[5]" ] ;
     ns1:hasDatatype "/type1" .
 
 ns1:d4 a ns1:Dataset ;
-    ns1:hasDataspace "[4]" ;
+    ns1:hasDataspace [ a ns1:Dataspace ;
+            ns1:shape "[4]" ] ;
     ns1:hasDatatype [ a ns1:Datatype ;
             ns1:datatypeClass ns1:H5T_VLEN ;
             ns1:elementDatatype ns1:H5T_STD_I32LE ] .

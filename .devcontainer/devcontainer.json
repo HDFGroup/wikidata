@@ -13,7 +13,8 @@
         "ms-vscode-remote.remote-containers",
         "ms-azuretools.vscode-docker",
         "h5web.vscode-h5web",
-        "davidanson.vscode-markdownlint"
+        "davidanson.vscode-markdownlint",
+        "Zazuko.vscode-rdf-sketch"
       ],
       "settings": {
         "terminal.integrated.shell.linux": "/bin/bash"
