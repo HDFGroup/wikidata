@@ -1,0 +1,90 @@
+@prefix ns1: <http://hdfgroup.org/2025/02/hdf5#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ns1:file a ns1:File ;
+    rdfs:label "example.h5" ;
+    ns1:hasRoot [ a ns1:Group ;
+            rdfs:label "/" ;
+            ns1:hasAttribute [ a ns1:Attribute ;
+                    rdfs:label "attr1" ;
+                    ns1:hasDataspace ns1:H5S_SCALAR ;
+                    ns1:hasDatatype [ a ns1:Datatype ;
+                            ns1:charSet ns1:H5T_CSET_ASCII ;
+                            ns1:charType ns1:H5T_C_S1 ;
+                            ns1:datatypeClass ns1:H5T_STRING ;
+                            ns1:stringPad ns1:H5T_STR_NULLTERM ;
+                            ns1:stringSize 17 ] ;
+                    ns1:hasValue "string attribute" ] ;
+            ns1:hasLink [ a ns1:Link ;
+                    rdfs:label "type1" ;
+                    ns1:destination ns1:t4 ],
+                [ a ns1:Link ;
+                    rdfs:label "dset1" ;
+                    ns1:destination ns1:d1 ],
+                [ a ns1:Link ;
+                    rdfs:label "slink1" ;
+                    ns1:destination "somevalue" ],
+                [ a ns1:Link ;
+                    rdfs:label "group1" ;
+                    ns1:destination ns1:g1 ],
+                [ a ns1:Link ;
+                    rdfs:label "dset2" ;
+                    ns1:destination ns1:d2 ],
+                [ a ns1:Link ;
+                    rdfs:label "dset3" ;
+                    ns1:destination ns1:d4 ],
+                [ a ns1:Link ;
+                    rdfs:label "group2" ;
+                    ns1:destination ns1:g1 ] ] .
+
+ns1:d1 a ns1:Dataset ;
+    ns1:hasDataspace "[10, 10]" ;
+    ns1:hasDatatype ns1:H5T_STD_I32BE .
+
+ns1:d2 a ns1:Dataset ;
+    ns1:hasDataspace "[5]" ;
+    ns1:hasDatatype [ a ns1:Datatype ;
+            ns1:datatypeClass ns1:H5T_COMPOUND ;
+            ns1:hasField [ ns1:fieldName "c" ;
+                    ns1:fieldType ns1:H5T_IEEE_F64BE ;
+                    ns1:hasOffset 8 ],
+                [ ns1:fieldName "a" ;
+                    ns1:fieldType ns1:H5T_STD_I32BE ;
+                    ns1:hasOffset 0 ],
+                [ ns1:fieldName "b" ;
+                    ns1:fieldType ns1:H5T_IEEE_F32BE ;
+                    ns1:hasOffset 4 ] ] .
+
+ns1:d3 a ns1:Dataset ;
+    ns1:hasDataspace "[5]" ;
+    ns1:hasDatatype "/type1" .
+
+ns1:d4 a ns1:Dataset ;
+    ns1:hasDataspace "[4]" ;
+    ns1:hasDatatype [ a ns1:Datatype ;
+            ns1:datatypeClass ns1:H5T_VLEN ;
+            ns1:elementDatatype ns1:H5T_STD_I32LE ] .
+
+ns1:t4 a ns1:DatatypeObject ;
+    ns1:datatypeClass ns1:H5T_COMPOUND ;
+    ns1:hasField [ ns1:fieldName "b" ;
+            ns1:fieldType [ a ns1:Datatype ;
+                    ns1:datatypeClass ns1:H5T_ARRAY ;
+                    ns1:elementDatatype ns1:H5T_IEEE_F32BE ;
+                    ns1:shape "[5][6]" ] ;
+            ns1:hasOffset 16 ],
+        [ ns1:fieldName "a" ;
+            ns1:fieldType [ a ns1:Datatype ;
+                    ns1:datatypeClass ns1:H5T_ARRAY ;
+                    ns1:elementDatatype ns1:H5T_STD_I32BE ;
+                    ns1:shape "[4]" ] ;
+            ns1:hasOffset 0 ] .
+
+ns1:g1 a ns1:Group ;
+    ns1:hasComment "This is a comment for group1" ;
+    ns1:hasLink [ a ns1:Link ;
+            rdfs:label "dset3" ;
+            ns1:destination ns1:d3 ] .
+
+
