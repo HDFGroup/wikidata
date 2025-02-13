@@ -1,4 +1,4 @@
-from rdflib import Graph, Namespace, Literal
+from rdflib import BNode, Graph, Namespace, Literal
 from rdflib.namespace import RDF, RDFS
 
 g = Graph()
@@ -39,23 +39,24 @@ g.add((H5.l1, H5.destination, H5.d1))
 # /dest2
 g.add((H5.t2, RDF.type, H5.Datatype))
 g.add((H5.t2, H5.datatypeClass, H5.H5T_COMPOUND))
-g.add((H5.c1, RDF.type, H5.CompoundField))
-g.add((H5.c1, H5.fieldName, Literal("a")))
-g.add((H5.c1, H5.fieldType, H5.H5T_STD_I32BE))
-g.add((H5.c1, H5.hasOffset, Literal(0)))
-g.add((H5.t2, H5.hasField, H5.c1))
 
-g.add((H5.c2, RDF.type, H5.CompoundField))
-g.add((H5.c2, H5.fieldName, Literal("b")))
-g.add((H5.c2, H5.fieldType, H5.H5T_IEEE_F32BE))
-g.add((H5.c2, H5.hasOffset, Literal(4)))
-g.add((H5.t2, H5.hasField, H5.c2))
+b1 = BNode()
+g.add((b1, H5.fieldName, Literal("a")))
+g.add((b1, H5.fieldType, H5.H5T_STD_I32BE))
+g.add((b1, H5.hasOffset, Literal(0)))
+g.add((H5.t2, H5.hasField, b1))
 
-g.add((H5.c3, RDF.type, H5.CompoundField))
-g.add((H5.c3, H5.fieldName, Literal("c")))
-g.add((H5.c3, H5.fieldType, H5.H5T_IEEE_F64BE))
-g.add((H5.c3, H5.hasOffset, Literal(8)))
-g.add((H5.t2, H5.hasField, H5.c3))
+b2 = BNode()
+g.add((b2, H5.fieldName, Literal("b")))
+g.add((b2, H5.fieldType, H5.H5T_IEEE_F32BE))
+g.add((b2, H5.hasOffset, Literal(4)))
+g.add((H5.t2, H5.hasField, b2))
+
+b3 = BNode()
+g.add((b3, H5.fieldName, Literal("c")))
+g.add((b3, H5.fieldType, H5.H5T_IEEE_F64BE))
+g.add((b3, H5.hasOffset, Literal(8)))
+g.add((H5.t2, H5.hasField, b3))
 
 g.add((H5.d2, RDF.type, H5.Dataset))
 g.add((H5.d2, H5.hasDatatype, H5.t2))
