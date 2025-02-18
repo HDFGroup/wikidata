@@ -1,0 +1,60 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<http://hdfgroup.org/2025/02/hdf5#ArrayVariable> a rdfs:Class ;
+    rdfs:label "HDF5 ArrayVariable" .
+
+<http://hdfgroup.org/2025/02/hdf5#Attribute> a rdfs:Class ;
+    rdfs:label "HDF5 Attribute" ;
+    rdfs:subClassOf <http://hdfgroup.org/2025/02/hdf5#ArrayVariable> .
+
+<http://hdfgroup.org/2025/02/hdf5#Dataset> a rdfs:Class ;
+    rdfs:label "HDF5 Dataset" ;
+    rdfs:subClassOf <http://hdfgroup.org/2025/02/hdf5#ArrayVariable>,
+        <http://hdfgroup.org/2025/02/hdf5#Object> .
+
+<http://hdfgroup.org/2025/02/hdf5#Dataspace> a rdfs:Class ;
+    rdfs:label "HDF5 Dataspace" .
+
+<http://hdfgroup.org/2025/02/hdf5#Datatype> a rdfs:Class ;
+    rdfs:label "HDF5 Datatype" .
+
+<http://hdfgroup.org/2025/02/hdf5#DatatypeObject> a rdfs:Class ;
+    rdfs:label "HDF5 Datatype Object" ;
+    rdfs:subClassOf <http://hdfgroup.org/2025/02/hdf5#Object> .
+
+<http://hdfgroup.org/2025/02/hdf5#File> a rdfs:Class ;
+    rdfs:label "HDF5 File" .
+
+<http://hdfgroup.org/2025/02/hdf5#Group> a rdfs:Class ;
+    rdfs:label "HDF5 Group" ;
+    rdfs:subClassOf <http://hdfgroup.org/2025/02/hdf5#Object> .
+
+<http://hdfgroup.org/2025/02/hdf5#Link> a rdfs:Class ;
+    rdfs:label "HDF5 Link" .
+
+<http://hdfgroup.org/2025/02/hdf5#Object> a rdfs:Class ;
+    rdfs:label "HDF5 Object" .
+
+<http://hdfgroup.org/2025/02/hdf5#destination> a rdf:Property ;
+    rdfs:domain <http://hdfgroup.org/2025/02/hdf5#Link> .
+
+<http://hdfgroup.org/2025/02/hdf5#hasAttribute> a rdf:Property ;
+    rdfs:domain <http://hdfgroup.org/2025/02/hdf5#Object> ;
+    rdfs:range <http://hdfgroup.org/2025/02/hdf5#Attribute> .
+
+<http://hdfgroup.org/2025/02/hdf5#hasDataspace> a rdf:Property ;
+    rdfs:domain <http://hdfgroup.org/2025/02/hdf5#ArrayVariable> .
+
+<http://hdfgroup.org/2025/02/hdf5#hasDatatype> a rdf:Property ;
+    rdfs:domain <http://hdfgroup.org/2025/02/hdf5#ArrayVariable> .
+
+<http://hdfgroup.org/2025/02/hdf5#hasLink> a rdf:Property ;
+    rdfs:domain <http://hdfgroup.org/2025/02/hdf5#Group> ;
+    rdfs:range <http://hdfgroup.org/2025/02/hdf5#Link> .
+
+<http://hdfgroup.org/2025/02/hdf5#hasRoot> a rdf:Property ;
+    rdfs:domain <http://hdfgroup.org/2025/02/hdf5#File> ;
+    rdfs:range <http://hdfgroup.org/2025/02/hdf5#Group> .
+
+
